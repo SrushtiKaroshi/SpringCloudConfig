@@ -6,7 +6,7 @@ bucket4j:
       rate-limits:
         - cache-key: "getHeader('X-API-KEY')"
           bandwidths:
-            - capacity: 10
+            - capacity: 1
               time: 1
               unit: seconds
 name: srushti
