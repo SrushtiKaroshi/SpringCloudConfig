@@ -1,12 +1,64 @@
+# common properties for all profiles (optional)
 bucket4j:
   enabled: true
+
+---
+
+# Test profile configuration
+spring:
+  config:
+    activate:
+      on-profile: test
+
+bucket4j:
   filters:
     - cache-name: buckets
       url: /client/b4j
       rate-limits:
         - cache-key: "getHeader('X-API-KEY')"
           bandwidths:
-            - capacity: 5
+            - capacity: 1
               time: 1
               unit: seconds
 name: srushti
+
+---
+
+# Prod profile configuration
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+bucket4j:
+  filters:
+    - cache-name: buckets
+      url: /client/b4j
+      rate-limits:
+        - cache-key: "getHeader('X-API-KEY')"
+          bandwidths:
+            - capacity: 10
+              time: 1
+              unit: seconds
+name: srushti
+
+
+
+
+
+
+
+
+
+# bucket4j:
+#   enabled: true
+#   filters:
+#     - cache-name: buckets
+#       url: /client/b4j
+#       rate-limits:
+#         - cache-key: "getHeader('X-API-KEY')"
+#           bandwidths:
+#             - capacity: 5
+#               time: 1
+#               unit: seconds
+# name: srushti
